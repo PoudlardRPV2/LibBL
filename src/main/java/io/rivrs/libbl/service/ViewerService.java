@@ -1,11 +1,11 @@
 package io.rivrs.libbl.service;
 
 import com.github.retrooper.packetevents.PacketEvents;
-import io.rivrs.libbl.LibBL;
 import io.rivrs.libbl.task.ViewerUpdateTask;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class ViewerService {
 
-    private final LibBL plugin;
+    private final JavaPlugin plugin;
     private final Map<UUID, Object> playerChannels = new ConcurrentHashMap<>();
     private ViewerUpdateTask viewerUpdateTask;
 

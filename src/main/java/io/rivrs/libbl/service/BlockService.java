@@ -2,7 +2,6 @@ package io.rivrs.libbl.service;
 
 import com.github.retrooper.packetevents.util.Vector3i;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
-import io.rivrs.libbl.LibBL;
 import io.rivrs.libbl.model.block.FakeBlock;
 import io.rivrs.libbl.utils.ThreadSafeLong2ObjectMap;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +10,7 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -22,7 +22,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @RequiredArgsConstructor
 public class BlockService {
 
-    private final LibBL plugin;
+    private final JavaPlugin plugin;
 
     private final Map<UUID, FakeBlock> fakeBlocks = new ConcurrentHashMap<>();
     private final Map<Location, UUID> positionUUIDMap = new ConcurrentHashMap<>();

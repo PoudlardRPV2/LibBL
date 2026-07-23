@@ -6,6 +6,7 @@ import io.rivrs.libbl.task.EntityVisibilityTask;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.Collections;
@@ -17,7 +18,7 @@ import java.util.concurrent.*;
 @RequiredArgsConstructor
 public class EntityService {
 
-    private final LibBL plugin;
+    private final JavaPlugin plugin;
     private final List<PacketEntity> entities = new CopyOnWriteArrayList<>();
     private EntityVisibilityTask visibilityTask;
 

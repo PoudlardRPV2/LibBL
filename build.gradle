@@ -1,7 +1,6 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
-    id("io.papermc.paperweight.userdev") version '2.0.0-beta.18'
 }
 
 group = 'io.rivrs'
@@ -18,14 +17,20 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT")
-    compileOnly("com.github.retrooper:packetevents-spigot:2.11.2")
+    // LibBL n'utilise aucun NMS (net.minecraft / craftbukkit = 0 import) : paperweight est
+    // inutile. On compile contre l'API Paper publique (Mojang-mapped depuis 1.20.5).
+    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
+
+    // PacketEvents : jamais shadé, jamais relocalisé. Aligné sur la version du core
+    // (poudlard-catalog : packetevents = 2.11.1), qui supporte déjà 1.21.10.
+    compileOnly("com.github.retrooper:packetevents-spigot:2.11.1")
 
     compileOnly 'org.projectlombok:lombok:1.+'
     annotationProcessor 'org.projectlombok:lombok:1.+'
 }
 
-def targetJavaVersion = 25
+// Toolchain alignée sur le monorepo Poudlard (Java 21), au lieu du Java 25 de versions/1.21.8.
+def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion

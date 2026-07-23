@@ -132,7 +132,7 @@ public abstract class PacketEntity implements EntityMetadataProvider, ViewerHold
         if (this.hasEquipment())
             packets.add(this.buildEquipmentPacket());
         // Passengers packet has to be sent after the entity spawn packet, otherwise it won't work
-        Bukkit.getScheduler().runTaskAsynchronously(LibBL.get(), () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(LibBL.get().plugin(), () -> {
             if (this.hasPassengers()) {
                 this.sendPacket(player, this.buildSetPassengersPacket());
             }
