@@ -131,7 +131,7 @@ public class FakeBlock implements ViewerHolder {
             // Sans terminal, un chunk qui ne se charge pas laisserait le faux bloc affiché en
             // silence. On journalise et on retombe sur le retrait simple : le bloc disparaît
             // pour les viewers, même si ce n'est pas avec la donnée exacte du serveur.
-            LibBL.get().getPlugin().getLogger().warning(
+            LibBL.get().plugin().getLogger().warning(
                     "smartRemove: chunk load failed at " + location + ", falling back to remove(): " + ex);
             remove();
             return null;
