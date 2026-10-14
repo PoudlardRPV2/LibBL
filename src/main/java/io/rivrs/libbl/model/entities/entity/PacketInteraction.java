@@ -42,9 +42,19 @@ public class PacketInteraction extends PacketEntity {
         this.sendPacket(this.buildMetadataPacket());
     }
 
+    /** Width of the clickable box, centred on the location. */
+    public float width() {
+        return this.width;
+    }
+
     public void height(float height) {
         this.height = height;
         this.sendPacket(this.buildMetadataPacket());
+    }
+
+    /** Height of the clickable box, which rises from the location. */
+    public float height() {
+        return this.height;
     }
 
     public void responsive(boolean responsive) {
